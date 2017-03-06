@@ -1,7 +1,9 @@
-﻿namespace CCT.Infrastructure
+﻿using MongoDB.Driver;
+
+namespace CCT.Infrastructure
 {
     public interface IQuery<out TResult>
     {
-        TResult Execute();
+        TResult Execute(IMongoDatabase database);
     }
 }

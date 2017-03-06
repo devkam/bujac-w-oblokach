@@ -1,6 +1,6 @@
 ﻿namespace CCT.Infrastructure.Queries
 {
-    public class GetPlaintexyById
+    public class GetPlaintextById
     {
 
     }

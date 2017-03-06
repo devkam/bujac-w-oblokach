@@ -2,9 +2,9 @@
 
 namespace CCT.Infrastructure.Entity
 {
-    public class PlaintextEntity
+    public class Plaintext
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         public string Content { get; set; }
     }
