@@ -66,15 +66,14 @@
     <Compile Include="Commands\Handlers\AddNewPlaintextHandler.cs" />
     <Compile Include="DI\InfrastructureModule.cs" />
     <Compile Include="Entity\Plaintext.cs" />
-    <Compile Include="IQuery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queries.cs" />
     <Compile Include="Queries\GetAllPlaintexts.cs" />
     <Compile Include="Queries\GetPlaintextById.cs" />
     <Compile Include="Repository\IPlaintextRepository.cs" />
     <Compile Include="Repository\PlaintextRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

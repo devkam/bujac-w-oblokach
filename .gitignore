@@ -1,0 +1,11 @@
+/CCT/*.sln
+/CCT/packages
+/CCT/.vs
+/CCT/CCT.Infrastructure/obj
+/CCT/CCT.Infrastructure/bin
+/CCT/CCT.Web.API/bin
+/CCT/CCT.Web.API/obj
+/CCT/CCT.Web.UI/bin
+/CCT/CCT.Web.UI/obj
+/CCT/CCT.Web.API/*.user
+/CCT/CCT.Web.UI/*.user

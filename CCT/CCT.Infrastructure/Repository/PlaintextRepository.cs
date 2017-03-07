@@ -19,10 +19,5 @@ namespace CCT.Infrastructure.Repository
 
             return plaintext.Id;
         }
-
-        public Plaintext GetById(int id) {
-            var filter = Builders<Plaintext>.Filter.Eq("id", id);
-            return _database.GetCollection<Plaintext>(typeof(Plaintext).Name).Find(filter).First();
-        }
     }
 }

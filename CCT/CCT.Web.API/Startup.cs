@@ -1,7 +1,7 @@
-﻿using Microsoft.Owin;
+﻿using Autofac;
 using Owin;
-
-[assembly: OwinStartup(typeof(CCT.Web.API.Startup))]
+using System.Web.Http;
+using System.Web.Http.Dependencies;
 
 namespace CCT.Web.API
 {
@@ -9,7 +9,16 @@ namespace CCT.Web.API
     {
         public void Configuration(IAppBuilder app)
         {
+            var container = DependencyInjection.SetupDependencyInjection();
 
+            var config = new HttpConfiguration
+            {
+                DependencyResolver = container.Resolve<IDependencyResolver>()
+            };
+
+            app.UseAutofacMiddleware(container);
+            app.UseAutofacWebApi(config);
+            app.ConfigureWebApi(config);
         }
     }
 }
