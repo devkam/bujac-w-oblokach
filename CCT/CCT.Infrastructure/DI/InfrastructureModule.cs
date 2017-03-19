@@ -27,18 +27,14 @@ namespace CCT.Infrastructure.DI
         {
             var commandDispatcherKey = "commandDispatcher";
 
-            builder.RegisterType<CommandDispatcher>()
+            builder.RegisterType<CommandBus>()
                 .WithParameter(
-                    (pi, _) => pi.ParameterType == typeof(ICommandDispatcher),
-                    (_, ctx) => ctx.ResolveNamed<ICommandDispatcher>(commandDispatcherKey))
-                .As<ICommandDispatcher>();
+                    (pi, _) => pi.ParameterType == typeof(ICommandBus),
+                    (_, ctx) => ctx.ResolveNamed<ICommandBus>(commandDispatcherKey))
+                .As<ICommandBus>();
 
             builder.RegisterAssemblyTypes(typeof(ICommand).Assembly)
                    .AsClosedTypesOf(typeof(ICommandHandler<>))
-                   .AsImplementedInterfaces();
-
-            builder.RegisterAssemblyTypes(typeof(ICommand).Assembly)
-                   .AsClosedTypesOf(typeof(ICommandHandler<,>))
                    .AsImplementedInterfaces();
         }
 

@@ -2,17 +2,17 @@
 
 namespace CCT.Infrastructure.Commands.Handlers
 {
-    public class AddNewPlaintextHandler : ICommandHandler<AddNewPlaintextCommand, int>
+    public class AddPlaintextHandler : ICommandHandler<AddPlaintextCommand>
     {
         private readonly IPlaintextRepository _plaintextRepository;
 
-        public AddNewPlaintextHandler(IPlaintextRepository plaintextRepository) {
+        public AddPlaintextHandler(IPlaintextRepository plaintextRepository) {
             _plaintextRepository = plaintextRepository;
         }
 
-        public int Execute(AddNewPlaintextCommand command)
+        public void Handle(AddPlaintextCommand command)
         {
-            return _plaintextRepository.Add(new Entity.Plaintext
+            _plaintextRepository.Add(new Entity.Plaintext
             {
                 Content = command.Content
             });

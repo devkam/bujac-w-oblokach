@@ -1,4 +1,5 @@
-﻿using CCT.Infrastructure.Commands;
+﻿using CCT.Infrastructure;
+using CCT.Infrastructure.Commands;
 using CCT.Infrastructure.Entity;
 using CCT.Infrastructure.Queries;
 using CCT.Web.API.Models;
@@ -10,19 +11,19 @@ namespace CCT.Web.API.Controllers
     [RoutePrefix("api/plaintexts")]
     public class PlaintextController : ApiController
     {
-        private readonly ICommandDispatcher _commandDispatcher;
+        private readonly ICommandBus _commandBus;
         private readonly IQueryDispatcher _queryDispatcher;
 
-        public PlaintextController(ICommandDispatcher commandDispatcher, IQueryDispatcher queryDispatcher)
+        public PlaintextController(ICommandBus commandDispatcher, IQueryDispatcher queryDispatcher)
         {
-            _commandDispatcher = commandDispatcher;
+            _commandBus = commandDispatcher;
             _queryDispatcher = queryDispatcher;
         }
 
         [HttpPost, Route("")]
-        public int AddNewPlaintext(PlaintextModel plaintext)
+        public void AddNewPlaintext(PlaintextModel plaintext)
         {
-            return _commandDispatcher.Execute<AddNewPlaintextCommand, int>(new AddNewPlaintextCommand(plaintext.Content));
+            _commandBus.Handle(new AddPlaintextCommand(plaintext.Content));
         }
 
         [HttpGet, Route("")]

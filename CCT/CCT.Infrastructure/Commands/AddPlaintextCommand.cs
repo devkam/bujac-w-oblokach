@@ -1,10 +1,10 @@
 ﻿namespace CCT.Infrastructure.Commands
 {
-    public class AddNewPlaintextCommand : ICommand
+    public class AddPlaintextCommand : ICommand
     {
         public readonly string Content;
 
-        public AddNewPlaintextCommand(string content)
+        public AddPlaintextCommand(string content)
         {
             Content = content;
         }
