@@ -1,7 +1,7 @@
-﻿using CCT.Infrastructure.Entity;
+﻿using CCT.Domain.Domain;
 using MongoDB.Driver;
 
-namespace CCT.Infrastructure.Repository
+namespace CCT.Domain.Repositories
 {
     public class PlaintextRepository : IPlaintextRepository
     {

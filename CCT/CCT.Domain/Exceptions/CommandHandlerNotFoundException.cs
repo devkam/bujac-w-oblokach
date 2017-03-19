@@ -1,7 +1,7 @@
-﻿using CCT.Infrastructure.Commands;
+﻿using CCT.Domain.Commands;
 using System;
 
-namespace CCT.Infrastructure.Exceptions
+namespace CCT.Domain.Exceptions
 {
     public class CommandHandlerNotFoundException<TCommand> : Exception where TCommand : ICommand
     {

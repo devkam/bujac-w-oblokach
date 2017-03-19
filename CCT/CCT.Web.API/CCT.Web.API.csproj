@@ -233,6 +233,10 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CCT.Domain\CCT.Domain.csproj">
+      <Project>{D4102F67-4EAB-463B-BF7B-399168505407}</Project>
+      <Name>CCT.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CCT.Infrastructure\CCT.Infrastructure.csproj">
       <Project>{d2115969-3cba-48c6-9f6e-67ba6e46b359}</Project>
       <Name>CCT.Infrastructure</Name>

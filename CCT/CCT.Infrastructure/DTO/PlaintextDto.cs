@@ -1,9 +1,8 @@
-﻿namespace CCT.Infrastructure.Entity
+﻿namespace CCT.Infrastructure.DTO
 {
-    public class Plaintext
+    public class PlaintextDTO
     {
         public int Id { get; set; }
-
         public string Content { get; set; }
     }
 }

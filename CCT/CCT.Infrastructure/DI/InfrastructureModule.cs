@@ -1,7 +1,6 @@
 ﻿using Autofac;
-using CCT.Infrastructure.Commands;
-using CCT.Infrastructure.Queries;
-using CCT.Infrastructure.Repository;
+using CCT.Domain;
+using CCT.Domain.Repositories;
 using MongoDB.Driver;
 using System.Configuration;
 
@@ -14,6 +13,7 @@ namespace CCT.Infrastructure.DI
             RegisterMongoDb(builder);
             RegisterCommands(builder);
             RegisterRepositories(builder);
+            AutoMapperConfig.CreateMap();
 
             builder.RegisterType<QueryDispatcher>().AsImplementedInterfaces();
         }

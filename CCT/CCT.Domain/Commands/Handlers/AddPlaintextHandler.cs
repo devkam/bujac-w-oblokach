@@ -1,6 +1,6 @@
-﻿using CCT.Infrastructure.Repository;
+﻿using CCT.Domain.Repositories;
 
-namespace CCT.Infrastructure.Commands.Handlers
+namespace CCT.Domain.Commands.Handlers
 {
     public class AddPlaintextHandler : ICommandHandler<AddPlaintextCommand>
     {
@@ -12,7 +12,7 @@ namespace CCT.Infrastructure.Commands.Handlers
 
         public void Handle(AddPlaintextCommand command)
         {
-            _plaintextRepository.Add(new Entity.Plaintext
+            _plaintextRepository.Add(new Domain.Plaintext
             {
                 Content = command.Content
             });

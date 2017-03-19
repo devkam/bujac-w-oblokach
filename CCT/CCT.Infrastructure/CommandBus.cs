@@ -1,5 +1,6 @@
 ﻿using Autofac;
-using CCT.Infrastructure.Exceptions;
+using CCT.Domain;
+using CCT.Domain.Exceptions;
 
 namespace CCT.Infrastructure
 {

@@ -1,4 +1,4 @@
-﻿namespace CCT.Infrastructure.Commands
+﻿namespace CCT.Domain.Commands
 {
     public class AddPlaintextCommand : ICommand
     {

@@ -1,4 +1,4 @@
-﻿namespace CCT.Infrastructure
+﻿namespace CCT.Domain
 {
     public interface ICommandBus
     {

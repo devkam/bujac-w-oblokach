@@ -1,6 +1,6 @@
-﻿using CCT.Infrastructure.Entity;
+﻿using CCT.Domain.Domain;
 
-namespace CCT.Infrastructure.Repository
+namespace CCT.Domain.Repositories
 {
     public interface IPlaintextRepository
     {
