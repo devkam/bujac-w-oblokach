@@ -1,17 +1,7 @@
 ﻿using MongoDB.Driver;
 
-namespace CCT.Infrastructure.Queries
+namespace CCT.Infrastructure
 {
-    public interface IQuery<out TResult>
-    {
-        TResult Execute(IMongoDatabase database);
-    }
-
-    public interface IQueryDispatcher
-    {
-        TResult Execute<TResult>(IQuery<TResult> query);
-    }
-
     public class QueryDispatcher : IQueryDispatcher
     {
         private readonly IMongoDatabase _database;

@@ -1,5 +1,8 @@
-﻿using CCT.Infrastructure.Commands;
-using CCT.Infrastructure.Entity;
+﻿using CCT.Domain;
+using CCT.Domain.Commands;
+using CCT.Infrastructure;
+using CCT.Infrastructure.Commons;
+using CCT.Infrastructure.DTO;
 using CCT.Infrastructure.Queries;
 using CCT.Web.API.Models;
 using System.Collections.Generic;
@@ -10,31 +13,31 @@ namespace CCT.Web.API.Controllers
     [RoutePrefix("api/plaintexts")]
     public class PlaintextController : ApiController
     {
-        private readonly ICommandDispatcher _commandDispatcher;
+        private readonly ICommandBus _commandBus;
         private readonly IQueryDispatcher _queryDispatcher;
 
-        public PlaintextController(ICommandDispatcher commandDispatcher, IQueryDispatcher queryDispatcher)
+        public PlaintextController(ICommandBus commandDispatcher, IQueryDispatcher queryDispatcher)
         {
-            _commandDispatcher = commandDispatcher;
+            _commandBus = commandDispatcher;
             _queryDispatcher = queryDispatcher;
         }
 
         [HttpPost, Route("")]
-        public int AddNewPlaintext(PlaintextModel plaintext)
+        public void AddNewPlaintext(PlaintextModel plaintext)
         {
-            return _commandDispatcher.Execute<AddNewPlaintextCommand, int>(new AddNewPlaintextCommand(plaintext.Content));
+            _commandBus.Handle(new AddPlaintextCommand(plaintext.Content));
         }
 
         [HttpGet, Route("")]
-        public IEnumerable<Plaintext> GetAllPlaintexts()
+        public IEnumerable<PlaintextDTO> GetAllPlaintexts()
         {
             return _queryDispatcher.Execute(new GetAllPlaintexts());
         }
 
         [HttpGet, Route("{plaintextId:int}")]
-        public Plaintext GetPlaintext(int plaintextId)
+        public PlaintextDTO GetPlaintext(int plaintextId)
         {
-            return _queryDispatcher.Execute(new GetPlaintextById(plaintextId));
+            return _queryDispatcher.Execute(new GetPlaintextById(plaintextId)).MapTo<PlaintextDTO>();
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using Autofac;
-using CCT.Infrastructure.Commands;
-using CCT.Infrastructure.Queries;
-using CCT.Infrastructure.Repository;
+using CCT.Domain;
+using CCT.Domain.Repositories;
 using MongoDB.Driver;
 using System.Configuration;
 
@@ -14,6 +13,7 @@ namespace CCT.Infrastructure.DI
             RegisterMongoDb(builder);
             RegisterCommands(builder);
             RegisterRepositories(builder);
+            AutoMapperConfig.CreateMap();
 
             builder.RegisterType<QueryDispatcher>().AsImplementedInterfaces();
         }
@@ -27,18 +27,14 @@ namespace CCT.Infrastructure.DI
         {
             var commandDispatcherKey = "commandDispatcher";
 
-            builder.RegisterType<CommandDispatcher>()
+            builder.RegisterType<CommandBus>()
                 .WithParameter(
-                    (pi, _) => pi.ParameterType == typeof(ICommandDispatcher),
-                    (_, ctx) => ctx.ResolveNamed<ICommandDispatcher>(commandDispatcherKey))
-                .As<ICommandDispatcher>();
+                    (pi, _) => pi.ParameterType == typeof(ICommandBus),
+                    (_, ctx) => ctx.ResolveNamed<ICommandBus>(commandDispatcherKey))
+                .As<ICommandBus>();
 
             builder.RegisterAssemblyTypes(typeof(ICommand).Assembly)
                    .AsClosedTypesOf(typeof(ICommandHandler<>))
-                   .AsImplementedInterfaces();
-
-            builder.RegisterAssemblyTypes(typeof(ICommand).Assembly)
-                   .AsClosedTypesOf(typeof(ICommandHandler<,>))
                    .AsImplementedInterfaces();
         }
 

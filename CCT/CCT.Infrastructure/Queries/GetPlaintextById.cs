@@ -1,9 +1,11 @@
-﻿using CCT.Infrastructure.Entity;
+﻿using CCT.Domain.Domain;
+using CCT.Infrastructure.Commons;
+using CCT.Infrastructure.DTO;
 using MongoDB.Driver;
 
 namespace CCT.Infrastructure.Queries
 {
-    public class GetPlaintextById : IQuery<Plaintext>
+    public class GetPlaintextById : IQuery<PlaintextDTO>
     {
         private readonly int _plaintextId;
 
@@ -12,10 +14,13 @@ namespace CCT.Infrastructure.Queries
             _plaintextId = plaintextId;
         }
 
-        public Plaintext Execute(IMongoDatabase database)
+        public PlaintextDTO Execute(IMongoDatabase database)
         {
-            var filter = Builders<Plaintext>.Filter.Eq("id", _plaintextId);
-            return database.GetCollection<Plaintext>(typeof(Plaintext).Name).Find(filter).First();
+            var filter = Builders<Plaintext>.Filter.Eq("_id", _plaintextId);
+            return database.GetCollection<Plaintext>(typeof(Plaintext).Name)
+                .Find(filter)
+                .FirstOrDefault()
+                .MapTo<PlaintextDTO>();
         }
     }
 }

@@ -1,7 +1,7 @@
-﻿using CCT.Infrastructure.Entity;
+﻿using CCT.Domain.Domain;
 using MongoDB.Driver;
 
-namespace CCT.Infrastructure.Repository
+namespace CCT.Domain.Repositories
 {
     public class PlaintextRepository : IPlaintextRepository
     {
@@ -12,11 +12,9 @@ namespace CCT.Infrastructure.Repository
             _database = database;
         }
 
-        public int Add(Plaintext plaintext)
+        public void Add(Plaintext plaintext)
         {
             _database.GetCollection<Plaintext>(typeof(Plaintext).Name).InsertOne(plaintext);
-
-            return plaintext.Id;
         }
     }
 }
