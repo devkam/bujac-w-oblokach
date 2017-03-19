@@ -9,3 +9,5 @@
 /CCT/CCT.Web.UI/obj
 /CCT/CCT.Web.API/*.user
 /CCT/CCT.Web.UI/*.user
+/CCT/CCT.Domain/bin
+obj

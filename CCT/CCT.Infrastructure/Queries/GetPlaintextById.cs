@@ -16,10 +16,10 @@ namespace CCT.Infrastructure.Queries
 
         public PlaintextDTO Execute(IMongoDatabase database)
         {
-            var filter = Builders<Plaintext>.Filter.Eq("id", _plaintextId);
+            var filter = Builders<Plaintext>.Filter.Eq("_id", _plaintextId);
             return database.GetCollection<Plaintext>(typeof(Plaintext).Name)
                 .Find(filter)
-                .First()
+                .FirstOrDefault()
                 .MapTo<PlaintextDTO>();
         }
     }
