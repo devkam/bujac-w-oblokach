@@ -1,6 +1,5 @@
 ﻿using CCT.Infrastructure.Entity;
 using MongoDB.Driver;
-using System.Linq;
 
 namespace CCT.Infrastructure.Repository
 {

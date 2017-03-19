@@ -7,7 +7,7 @@ using System.Web.Http;
 
 namespace CCT.Web.API.Controllers
 {
-    [RoutePrefix("plaintexts")]
+    [RoutePrefix("api/plaintexts")]
     public class PlaintextController : ApiController
     {
         private readonly ICommandDispatcher _commandDispatcher;

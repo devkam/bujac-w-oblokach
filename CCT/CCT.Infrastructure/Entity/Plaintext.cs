@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace CCT.Infrastructure.Entity
+﻿namespace CCT.Infrastructure.Entity
 {
     public class Plaintext
     {

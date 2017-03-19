@@ -10,7 +10,6 @@ namespace CCT.Web.API
         public void Configuration(IAppBuilder app)
         {
             var container = DependencyInjection.SetupDependencyInjection();
-
             var config = new HttpConfiguration
             {
                 DependencyResolver = container.Resolve<IDependencyResolver>()

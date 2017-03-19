@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace CCT.Infrastructure.Commands
+﻿namespace CCT.Infrastructure.Commands
 {
     public class AddNewPlaintextCommand : ICommand
     {

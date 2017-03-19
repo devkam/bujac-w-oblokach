@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using CCT.Infrastructure.Exceptions;
 
 namespace CCT.Infrastructure.Commands
 {
@@ -44,7 +45,7 @@ namespace CCT.Infrastructure.Commands
 
             if (handler == null)
             {
-                //throw new CommandHandlerNotFoundException<TCommand>();
+                throw new CommandHandlerNotFoundException<TCommand>();
             }
 
             handler.Execute(command);
@@ -56,7 +57,7 @@ namespace CCT.Infrastructure.Commands
 
             if (handler == null)
             {
-                //throw new CommandHandlerNotFoundException<TCommand>();
+                throw new CommandHandlerNotFoundException<TCommand>();
             }
 
             return handler.Execute(command);
