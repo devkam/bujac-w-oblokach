@@ -11,3 +11,5 @@
 /CCT/CCT.Web.UI/*.user
 /CCT/CCT.Domain/bin
 obj
+/CCT/CCT.CryptoLib/bin
+/CCT/CCT.CryptoLibTest/bin
