@@ -7,31 +7,33 @@ namespace CCT.CryptoLibTest.Ciphers.Block
     public class SDESTest
     {
         int key = 798;
-        int plainText = 40;
-        int cipherText;
+        int expectedPlaintext = 40;
+        int ciphertext;
         SDES sdes;
 
         [SetUp]
         public void Init()
         {
             sdes = new SDES(key);
-            cipherText = sdes.Encrypt(plainText);
+            ciphertext = sdes.Encrypt(expectedPlaintext);
         }
-
 
         [Test]
         public void CheckIfDecryptedCipherTextCanBeRead()
         {
-            int result = sdes.Decrypt(cipherText);
-            Assert.AreEqual(cipherText, 138);
-            Assert.AreEqual(plainText, result);
+            int expectedCiphertext = 138;
+            int plaintext = sdes.Decrypt(ciphertext);
+            Assert.AreEqual(expectedCiphertext, ciphertext);
+            Assert.AreEqual(expectedPlaintext, plaintext);
         }
 
         [Test]
         public void CheckIfSubkeysAreValid()
         {
-            Assert.AreEqual(sdes.Subkeys[0], 233);
-            Assert.AreEqual(sdes.Subkeys[1], 167);
+            int expectedSubkey1 = 233;
+            int expectedSubkey2 = 167;
+            Assert.AreEqual(expectedSubkey1, sdes.Subkeys[0]);
+            Assert.AreEqual(expectedSubkey2, sdes.Subkeys[1]);
         }
     }
 }

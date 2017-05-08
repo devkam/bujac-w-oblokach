@@ -9,9 +9,9 @@ namespace CCT.CryptoLib.Ciphers.Block
 
         private readonly int[] IP = { 1, 5, 2, 0, 3, 7, 4, 6 };
         private readonly int[] IIP = { 3, 0, 2, 4, 6, 1, 7, 5 };
-        public readonly int[] P10 = { 2, 4, 1, 6, 3, 9, 0, 8, 7, 5 };
-        public readonly int[] P8 = { 5, 2, 6, 3, 7, 4, 9, 8 };
-        public readonly int[] P4 = { 1, 3, 2, 0 };
+        private readonly int[] P10 = { 2, 4, 1, 6, 3, 9, 0, 8, 7, 5 };
+        private readonly int[] P8 = { 5, 2, 6, 3, 7, 4, 9, 8 };
+        private readonly int[] P4 = { 1, 3, 2, 0 };
         private readonly int[] E = { 3, 0, 1, 2, 1, 2, 3, 0 };
 
         private readonly int[][] S_BOXES = {
@@ -87,14 +87,14 @@ namespace CCT.CryptoLib.Ciphers.Block
 
         private int fK(int block, int subkey)
         {
-            var parts = CombinatoricsUtil.Halve(block, HALF_OF_BLOCK);
+            int[] parts = CombinatoricsUtil.Halve(block, HALF_OF_BLOCK);
             return ((parts[0] ^ F(parts[1], subkey)) << HALF_OF_BLOCK | parts[1]);
         }
 
         private int F(int block, int subkey)
         {
             int extended = CombinatoricsUtil.Permutate(block, E) ^ subkey;
-            var parts = CombinatoricsUtil.Halve(extended, HALF_OF_BLOCK);
+            int[] parts = CombinatoricsUtil.Halve(extended, HALF_OF_BLOCK);
             int left = S_BOXES[0][FindSBoxIndex(parts[0])];
             int right = S_BOXES[1][FindSBoxIndex(parts[1])];
             return CombinatoricsUtil.Permutate((left << 2) | right, P4);

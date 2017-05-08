@@ -7,20 +7,27 @@ namespace CCT.CryptoLibTest.Utils
     public class CombinatoricsUtilTest
     {
         [Test]
-        public void PermutateSingleValue()
+        public void CheckSinglePermutate()
         {
-            int[] P10 = { 2, 4, 1, 6, 3, 9, 0, 8, 7, 5 };
-            int result = CombinatoricsUtil.Permutate(100, P10);
-            Assert.AreEqual(290, result);
+            int expectedPermutatedResult = 290;
+            int input = 100;
+            int[] permutation = { 2, 4, 1, 6, 3, 9, 0, 8, 7, 5 };
+            int result = CombinatoricsUtil.Permutate(input, permutation);
+            Assert.AreEqual(expectedPermutatedResult, result);
         }
 
         [Test]
-        public void CyclicShiftToLeft()
+        public void CheckCyclicShiftToLeft()
         {
-            int actual1 = CombinatoricsUtil.CyclicShiftToLeft(6, 1, 5);
-            int actual2 = CombinatoricsUtil.CyclicShiftToLeft(15, 1, 5);
-            Assert.AreEqual(12, actual1);
-            Assert.AreEqual(30, actual2);
+            int[] inputs = new int[] { 6, 15 };
+            int[] expects = new int[] { 12, 30 };
+            int numberOfShifts = 1;
+            int blockSize = 5;
+            for (int i = 0; i < inputs.Length; i++)
+            {
+                int result = CombinatoricsUtil.CyclicShiftToLeft(inputs[i], numberOfShifts, blockSize);
+                Assert.AreEqual(expects[i], result);
+            }
         }
     }
 }
