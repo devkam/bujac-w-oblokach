@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CCT.CryptoLib.Ciphers
+﻿namespace CCT.CryptoLib.Ciphers
 {
     public interface ICipher
     {
-        void Encrypt(int ciphertext, int key);
+        int Key { get; set; }
 
-        void Decrypt(int plaintext, int key);
+        int Encrypt(int ciphertext);
+
+        int Decrypt(int plaintext);
     }
 }
