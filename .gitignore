@@ -1,4 +1,3 @@
-/CCT/*.sln
 /CCT/packages
 /CCT/.vs
 /CCT/CCT.Infrastructure/obj
@@ -11,3 +10,5 @@
 /CCT/CCT.Web.UI/*.user
 /CCT/CCT.Domain/bin
 obj
+/CCT/CCT.CryptoLib/bin
+/CCT/CCT.CryptoLibTest/bin
